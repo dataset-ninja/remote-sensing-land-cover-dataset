@@ -6,7 +6,9 @@ from dataset_tools.templates import AnnotationType, CVTask, Industry, License
 # * Before uploading to instance #
 ##################################
 PROJECT_NAME: str = "LoveDA - A Remote Sensing Land-Cover"
-PROJECT_NAME_FULL: str = "LoveDA: A Remote Sensing Land-Cover Dataset for Domain Adaptive Semantic Segmentation"
+PROJECT_NAME_FULL: str = (
+    "LoveDA: A Remote Sensing Land-Cover Dataset for Domain Adaptive Semantic Segmentation"
+)
 
 ##################################
 # * After uploading to instance ##
@@ -20,7 +22,7 @@ RELEASE_YEAR: int = 2021
 HOMEPAGE_URL: str = "https://zenodo.org/record/5706578#.YZvN7SYRXdF"
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = 0
+PREVIEW_IMAGE_ID: int = 886655
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
 GITHUB_URL: str = "https://github.com/dataset-ninja/remote-sensing-land-cover-dataset"
@@ -30,13 +32,21 @@ GITHUB_URL: str = "https://github.com/dataset-ninja/remote-sensing-land-cover-da
 ### * Optional after uploading ###
 ##################################
 DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = {
-  "Train.zip": "https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/Y/a/xu/gicWjDi0o8XZuc2HSZ67qp9TaC4imnhAI2iTJd4bwvxczL3FWsv8M6dPyWYbVV3SdMbifL8veLJ6nBq5pCppaMJ4AVv7ODQub51FdwkciYpJ1VkbBXJ8jRZE2bkB.zip",
-  "Val.zip": "https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/v/5/xe/h7pCO3wYFQ7z1fLqVzexwrZ5trEJkQ0EMNQjcZoBXkySK3OOwecPOe7DQUlIbJvyUi1V8jmsMARE3OcXlHx4WiNChhM4F786Vrky446W2U8vTaqekhrx6oMHaRSx.zip",
-  "Test.zip": "https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/a/t/6x/5mJlxSTs2sPxM9aLeu8L6k74z9502n3cMBL20fIRWeZfK4Nb2KiMkk1FB9XOHSY4hHK17SQQgVtVnd1OdSMflFkg3BHOYO2SGZdxS37MBf482Nd4N1QinvwNLRyJ.zip"
+    "Train.zip": "https://zenodo.org/record/5706578/files/Train.zip?download=1",
+    "Val.zip": "https://zenodo.org/record/5706578/files/Val.zip?download=1",
+    "Test.zip": "https://zenodo.org/record/5706578/files/Test.zip?download=1",
 }
 # Optional link for downloading original dataset (e.g. "https://some.com/dataset/download")
 
-CLASS2COLOR: Optional[Dict[str, List[str]]] = None
+CLASS2COLOR: Optional[Dict[str, List[str]]] = {
+    "background": [87, 4, 79],
+    "building": [152, 95, 173],
+    "road": [17, 24, 149],
+    "water": [180, 207, 210],
+    "barren": [180, 162, 54],
+    "forest": [134, 203, 67],
+    "agriculture": [135, 102, 1],
+}
 # If specific colors for classes are needed, fill this dict (e.g. {"class1": [255, 0, 0], "class2": [0, 255, 0]})
 
 PAPER: Optional[str] = None
