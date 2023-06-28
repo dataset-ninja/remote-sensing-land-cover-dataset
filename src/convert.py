@@ -48,7 +48,7 @@ def download_dataset(teamfiles_dir: str) -> str:
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
                 unpack_if_archive(local_path)
                 sly.logger.info(f"Archive '{file_name_with_ext}' was unpacked successfully")
-                sly.logger.info(f"Archive includes files: '{os.listdir(local_path)}'")
+                sly.logger.info(f"Archive includes files: '{os.listdir(local_path.rstrip('.zip'))}'")
 
             else:
                 sly.logger.info(
