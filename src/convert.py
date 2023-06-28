@@ -133,11 +133,13 @@ def convert_and_upload_supervisely_project(
         ds_path = os.path.join(dataset_path, ds_name)
         if os.path.isdir(ds_path):
             dataset = api.dataset.create(project.id, ds_name)
-            rural_images_dir = os.path.join(ds_path, rural_dirname, images_dirname)
-            urban_images_dir = os.path.join(ds_path, urban_dirname, images_dirname)
+            rural_img_dir = os.path.join(ds_path, rural_dirname, images_dirname)
+            urban_img_dir = os.path.join(ds_path, urban_dirname, images_dirname)
 
-            rural_images = sly.fs.list_files(rural_images_dir)
-            urban_images = sly.fs.list_files(urban_images_dir)
+            rural_img_names = os.listdir(rural_img_dir)
+            urban_img_names = os.listdir(urban_img_dir)
+            rural_images = [os.path.join(rural_img_dir, img_name) for img_name in rural_img_names]
+            urban_images = [os.path.join(urban_img_dir, img_name) for img_name in urban_img_names]
             all_images = rural_images + urban_images
 
             pbar = tqdm(desc=f"Processing '{ds_name}' dataset", total=len(all_images))
