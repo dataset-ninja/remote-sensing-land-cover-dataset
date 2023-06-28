@@ -1,6 +1,6 @@
 import os
-from urllib.parse import unquote, urlparse
 import shutil
+from urllib.parse import unquote, urlparse
 
 import supervisely as sly
 from cv2 import connectedComponents
@@ -30,6 +30,7 @@ def download_dataset(teamfiles_dir: str) -> str:
         dataset_path = unpack_if_archive(local_path)
 
     if isinstance(s.DOWNLOAD_ORIGINAL_URL, dict):
+        result_dir = os.path.join(storage_dir, "result")
         for file_name_with_ext, url in s.DOWNLOAD_ORIGINAL_URL.items():
             local_path = os.path.join(storage_dir, file_name_with_ext)
             teamfiles_path = os.path.join(teamfiles_dir, file_name_with_ext)
@@ -47,17 +48,20 @@ def download_dataset(teamfiles_dir: str) -> str:
                 )
 
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
-                unpack_if_archive(local_path)
-                split_path = local_path.rstrip(".zip")
+                extraction_path = unpack_if_archive(local_path)
                 sly.logger.info(f"Archive '{file_name_with_ext}' was unpacked successfully")
-                sly.logger.info(f"Archive includes files: '{os.listdir(local_path.rstrip('.zip'))}'")
+                shutil.move(extraction_path, result_dir)
+                sly.fs.remove_dir(extraction_path)
+                sly.fs.silent_remove(local_path)
+
+                sly.logger.info(f"Archive includes files: '{os.listdir(extraction_path)}'")
 
             else:
                 sly.logger.info(
                     f"Archive '{file_name_with_ext}' was already unpacked to '{os.path.join(storage_dir, get_file_name(file_name_with_ext))}'. Skipping..."
                 )
 
-        dataset_path = storage_dir
+        dataset_path = result_dir
         sly.logger.info(f"Dataset was downloaded to '{dataset_path}'")
         sly.logger.info(f"List files and directories: '{os.listdir(dataset_path)}'")
     return dataset_path
@@ -135,7 +139,10 @@ def convert_and_upload_supervisely_project(
 
         progress_cb(len(batch))
 
-    meta = sly.ProjectMeta(obj_classes=list(idx_to_objclasses.values()))
+    meta = sly.ProjectMeta(
+        obj_classes=list(idx_to_objclasses.values()),
+        tag_metas=list(folder_to_tag_meta.values()),
+    )
 
     project = api.project.create(workspace_id, project_name)
     api.project.update_meta(project.id, meta.to_json())
