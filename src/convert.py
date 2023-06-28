@@ -1,5 +1,6 @@
 import os
 from urllib.parse import unquote, urlparse
+import shutil
 
 import supervisely as sly
 from cv2 import connectedComponents
@@ -47,6 +48,9 @@ def download_dataset(teamfiles_dir: str) -> str:
 
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
                 unpack_if_archive(local_path)
+                split_path = local_path.rstrip(".zip")
+                if os.listdir(split_path) == [split_path.split("/")[-1]]:
+                    shutil.move(os.path.join(split_path, split_path.split("/")[-1]), storage_dir)
                 sly.logger.info(f"Archive '{file_name_with_ext}' was unpacked successfully")
                 sly.logger.info(f"Archive includes files: '{os.listdir(local_path.rstrip('.zip'))}'")
 
