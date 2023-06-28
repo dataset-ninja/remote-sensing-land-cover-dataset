@@ -30,7 +30,6 @@ def download_dataset(teamfiles_dir: str) -> str:
         dataset_path = unpack_if_archive(local_path)
 
     if isinstance(s.DOWNLOAD_ORIGINAL_URL, dict):
-        result_dir = os.path.join(storage_dir, "result")
         for file_name_with_ext, url in s.DOWNLOAD_ORIGINAL_URL.items():
             local_path = os.path.join(storage_dir, file_name_with_ext)
             teamfiles_path = os.path.join(teamfiles_dir, file_name_with_ext)
@@ -48,13 +47,8 @@ def download_dataset(teamfiles_dir: str) -> str:
                 )
 
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
-                extraction_path = unpack_if_archive(local_path)
-                ds_path = os.path.join(extraction_path, get_file_name(local_path))
+                unpack_if_archive(local_path)
                 sly.logger.info(f"Archive '{file_name_with_ext}' was unpacked successfully")
-                sly.logger.info(f"Extraction path includes files: '{os.listdir(extraction_path)}'")
-                sly.logger.info(f"Ds_path includes files: '{os.listdir(ds_path)}'")
-                shutil.move(ds_path, result_dir)
-                sly.fs.remove_dir(extraction_path)
                 sly.fs.silent_remove(local_path)
 
 
@@ -63,7 +57,7 @@ def download_dataset(teamfiles_dir: str) -> str:
                     f"Archive '{file_name_with_ext}' was already unpacked to '{os.path.join(storage_dir, get_file_name(file_name_with_ext))}'. Skipping..."
                 )
 
-        dataset_path = result_dir
+        dataset_path = storage_dir
         sly.logger.info(f"Dataset was downloaded to '{dataset_path}'")
         sly.logger.info(f"List files and directories: '{os.listdir(dataset_path)}'")
     return dataset_path
@@ -152,6 +146,7 @@ def convert_and_upload_supervisely_project(
     ds_names = os.listdir(dataset_path)
     for ds_name in ds_names:
         ds_path = os.path.join(dataset_path, ds_name, ds_name)
+        sly.logger.info(f"List files and directories in '{ds_name}': '{os.listdir(ds_path)}'")
         if os.path.isdir(ds_path):
             dataset = api.dataset.create(project.id, ds_name)
             rural_img_dir = os.path.join(ds_path, rural_dirname, images_dirname)
