@@ -5,14 +5,14 @@ from dataset_tools.templates import AnnotationType, CVTask, Industry, License
 ##################################
 # * Before uploading to instance #
 ##################################
-PROJECT_NAME: str = "LoveDA: A Remote Sensing Land-Cover"
+PROJECT_NAME: str = "LoveDA - A Remote Sensing Land-Cover"
 PROJECT_NAME_FULL: str = "LoveDA: A Remote Sensing Land-Cover Dataset for Domain Adaptive Semantic Segmentation"
 
 ##################################
 # * After uploading to instance ##
 ##################################
 LICENSE: License = License.BY_NC_SA_4_0()
-INDUSTRIES: List[Industry] = []
+INDUSTRIES: List[Industry] = [Industry.Satellite()]
 CV_TASKS: List[CVTask] = [CVTask.SemanticSegmentation()]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.SemanticSegmentation()]
 
