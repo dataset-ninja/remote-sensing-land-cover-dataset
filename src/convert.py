@@ -35,6 +35,8 @@ def download_dataset(teamfiles_dir: str) -> str:
             teamfiles_path = os.path.join(teamfiles_dir, file_name_with_ext)
 
             if not os.path.exists(get_file_name(local_path)):
+                if os.path.exists(local_path.rstrip(".zip")):
+                    os.remove(local_path.rstrip(".zip"))
                 file_info = api.file.get_info_by_path(team_id, teamfiles_path)
                 d_progress = tqdm(
                     desc=f"Downloading {file_name_with_ext}",
@@ -49,8 +51,6 @@ def download_dataset(teamfiles_dir: str) -> str:
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
                 unpack_if_archive(local_path)
                 sly.logger.info(f"Archive '{file_name_with_ext}' was unpacked successfully")
-                sly.fs.silent_remove(local_path)
-
 
             else:
                 sly.logger.info(
