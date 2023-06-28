@@ -35,11 +35,20 @@ def download_dataset(teamfiles_dir: str) -> str:
 
             if not os.path.exists(get_file_name(local_path)):
                 file_info = api.file.get_info_by_path(team_id, teamfiles_path)
-                d_progress = tqdm(desc=f"Downloading {file_name_with_ext}", total=file_info.sizeb)
-                api.file.download(team_id, teamfiles_path, local_path, progress_cb=d_progress.update)
+                d_progress = tqdm(
+                    desc=f"Downloading {file_name_with_ext}",
+                    total=file_info.sizeb,
+                    unit="M",
+                    unit_scale=True,
+                )
+                api.file.download(
+                    team_id, teamfiles_path, local_path, progress_cb=d_progress.update
+                )
 
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
                 unpack_if_archive(local_path)
+                sly.logger.info(f"Archive '{file_name_with_ext}' was unpacked successfully")
+                sly.logger.info(f"Archive includes files: '{os.listdir(local_path)}'")
 
             else:
                 sly.logger.info(
@@ -47,6 +56,8 @@ def download_dataset(teamfiles_dir: str) -> str:
                 )
 
         dataset_path = storage_dir
+        sly.logger.info(f"Dataset was downloaded to '{dataset_path}'")
+        sly.logger.info(f"List files and directories: '{os.listdir(dataset_path)}'")
     return dataset_path
 
 
@@ -121,7 +132,6 @@ def convert_and_upload_supervisely_project(
         api.annotation.upload_anns(img_ids, anns_batch)
 
         progress_cb(len(batch))
-
 
     meta = sly.ProjectMeta(obj_classes=list(idx_to_objclasses.values()))
 
