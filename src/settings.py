@@ -30,9 +30,9 @@ GITHUB_URL: str = "https://github.com/dataset-ninja/remote-sensing-land-cover-da
 ### * Optional after uploading ###
 ##################################
 DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = {
-  "train.zip": "https://zenodo.org/record/5706578/files/Train.zip?download=1",
-  "val.zip": "https://zenodo.org/record/5706578/files/Val.zip?download=1",
-  "test.zip": "https://zenodo.org/record/5706578/files/Test.zip?download=1"
+  "train.zip": "https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/Y/a/xu/gicWjDi0o8XZuc2HSZ67qp9TaC4imnhAI2iTJd4bwvxczL3FWsv8M6dPyWYbVV3SdMbifL8veLJ6nBq5pCppaMJ4AVv7ODQub51FdwkciYpJ1VkbBXJ8jRZE2bkB.zip",
+  "val.zip": "https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/v/5/xe/h7pCO3wYFQ7z1fLqVzexwrZ5trEJkQ0EMNQjcZoBXkySK3OOwecPOe7DQUlIbJvyUi1V8jmsMARE3OcXlHx4WiNChhM4F786Vrky446W2U8vTaqekhrx6oMHaRSx.zip",
+  "test.zip": "https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/a/t/6x/5mJlxSTs2sPxM9aLeu8L6k74z9502n3cMBL20fIRWeZfK4Nb2KiMkk1FB9XOHSY4hHK17SQQgVtVnd1OdSMflFkg3BHOYO2SGZdxS37MBf482Nd4N1QinvwNLRyJ.zip"
 }
 # Optional link for downloading original dataset (e.g. "https://some.com/dataset/download")
 
