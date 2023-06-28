@@ -1,5 +1,5 @@
 import os
-import shutil
+import numpy as np
 from urllib.parse import unquote, urlparse
 
 import supervisely as sly
@@ -35,17 +35,9 @@ def download_dataset(teamfiles_dir: str) -> str:
             teamfiles_path = os.path.join(teamfiles_dir, file_name_with_ext)
 
             if not os.path.exists(get_file_name(local_path)):
-                file_info = api.file.get_info_by_path(team_id, teamfiles_path)
-                d_progress = tqdm(
-                    desc=f"Downloading {file_name_with_ext}",
-                    total=file_info.sizeb,
-                    unit="M",
-                    unit_scale=True,
-                )
+                sly.logger.info(f"Downloading '{file_name_with_ext}'...")
                 if not os.path.exists(local_path):
-                    api.file.download(
-                        team_id, teamfiles_path, local_path, progress_cb=d_progress.update
-                    )
+                    api.file.download(team_id, teamfiles_path, local_path)
 
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
                 unpack_if_archive(local_path)
@@ -98,6 +90,7 @@ def convert_and_upload_supervisely_project(
     images_dirname = "images_png"
     masks_dirname = "masks_png"
     dataset_path = download_dataset(teamfiles_dir)
+    # dataset_path = "/Users/almaz/Downloads/LoveDA/LoveDA - A Remote Sensing Land-Cover"
 
     def _create_ann(image_path, ds_path, dirname):
         labels = []
@@ -110,11 +103,13 @@ def convert_and_upload_supervisely_project(
 
         masks_dir = os.path.join(ds_path, dirname, masks_dirname)
         mask_path = os.path.join(masks_dir, image_name)
+        if not os.path.exists(mask_path):
+            return sly.Annotation(img_size=(img_height, img_wight))
         ann_np = sly.imaging.image.read(mask_path)[:, :, 2]
-        mask = ann_np != 0
-        ret, curr_mask = connectedComponents(mask.astype("uint8"), connectivity=8)
-        for i in range(1, ret):
-            obj_mask = curr_mask == i
+        for i in np.unique(ann_np):
+            if i == 0:
+                continue
+            obj_mask = ann_np == i
             curr_bitmap = sly.Bitmap(obj_mask)
             curr_obj_class = idx_to_objclasses[i]
             if curr_bitmap.area > 100:
