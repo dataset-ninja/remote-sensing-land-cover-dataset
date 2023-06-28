@@ -51,10 +51,10 @@ def download_dataset(teamfiles_dir: str) -> str:
                 extraction_path = unpack_if_archive(local_path)
                 sly.logger.info(f"Archive '{file_name_with_ext}' was unpacked successfully")
                 shutil.move(extraction_path, result_dir)
+                sly.logger.info(f"Archive includes files: '{os.listdir(extraction_path)}'")
                 sly.fs.remove_dir(extraction_path)
                 sly.fs.silent_remove(local_path)
 
-                sly.logger.info(f"Archive includes files: '{os.listdir(extraction_path)}'")
 
             else:
                 sly.logger.info(
