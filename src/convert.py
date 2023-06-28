@@ -50,8 +50,6 @@ def download_dataset(teamfiles_dir: str) -> str:
                 )
 
         dataset_path = storage_dir
-        sly.logger.info(f"Dataset was downloaded to '{dataset_path}'")
-        sly.logger.info(f"List files and directories: '{os.listdir(dataset_path)}'")
     return dataset_path
 
 
@@ -141,7 +139,6 @@ def convert_and_upload_supervisely_project(
     ds_names = os.listdir(dataset_path)
     for ds_name in ds_names:
         ds_path = os.path.join(dataset_path, ds_name, ds_name)
-        sly.logger.info(f"List files and directories in '{ds_name}': '{os.listdir(ds_path)}'")
         if os.path.isdir(ds_path):
             dataset = api.dataset.create(project.id, ds_name)
             rural_img_dir = os.path.join(ds_path, rural_dirname, images_dirname)
