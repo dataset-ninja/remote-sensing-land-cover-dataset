@@ -34,7 +34,9 @@ def download_dataset(teamfiles_dir: str) -> str:
             teamfiles_path = os.path.join(teamfiles_dir, file_name_with_ext)
 
             if not os.path.exists(get_file_name(local_path)):
-                api.file.download(team_id, teamfiles_path, local_path)
+                file_info = api.file.get_info_by_path(team_id, teamfiles_path)
+                d_progress = tqdm(desc=f"Downloading {file_name_with_ext}", total=file_info.sizeb)
+                api.file.download(team_id, teamfiles_path, local_path, progress_cb=d_progress.update)
 
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
                 unpack_if_archive(local_path)
@@ -120,9 +122,10 @@ def convert_and_upload_supervisely_project(
 
         progress_cb(len(batch))
 
-    project = api.project.create(workspace_id, project_name)
 
-    meta = sly.ProjectMeta(obj_classes=[list(idx_to_objclasses.values())])
+    meta = sly.ProjectMeta(obj_classes=list(idx_to_objclasses.values()))
+
+    project = api.project.create(workspace_id, project_name)
     api.project.update_meta(project.id, meta.to_json())
 
     ds_names = os.listdir(dataset_path)
