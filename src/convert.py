@@ -49,8 +49,6 @@ def download_dataset(teamfiles_dir: str) -> str:
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
                 unpack_if_archive(local_path)
                 split_path = local_path.rstrip(".zip")
-                if os.listdir(split_path) == [split_path.split("/")[-1]]:
-                    shutil.move(os.path.join(split_path, split_path.split("/")[-1]), storage_dir)
                 sly.logger.info(f"Archive '{file_name_with_ext}' was unpacked successfully")
                 sly.logger.info(f"Archive includes files: '{os.listdir(local_path.rstrip('.zip'))}'")
 
@@ -144,7 +142,7 @@ def convert_and_upload_supervisely_project(
 
     ds_names = os.listdir(dataset_path)
     for ds_name in ds_names:
-        ds_path = os.path.join(dataset_path, ds_name)
+        ds_path = os.path.join(dataset_path, ds_name, ds_name)
         if os.path.isdir(ds_path):
             dataset = api.dataset.create(project.id, ds_name)
             rural_img_dir = os.path.join(ds_path, rural_dirname, images_dirname)
