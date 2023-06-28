@@ -49,9 +49,11 @@ def download_dataset(teamfiles_dir: str) -> str:
 
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
                 extraction_path = unpack_if_archive(local_path)
+                ds_path = os.path.join(extraction_path, get_file_name(local_path))
                 sly.logger.info(f"Archive '{file_name_with_ext}' was unpacked successfully")
-                shutil.move(extraction_path, result_dir)
-                sly.logger.info(f"Archive includes files: '{os.listdir(extraction_path)}'")
+                sly.logger.info(f"Extraction path includes files: '{os.listdir(extraction_path)}'")
+                sly.logger.info(f"Ds_path includes files: '{os.listdir(ds_path)}'")
+                shutil.move(ds_path, result_dir)
                 sly.fs.remove_dir(extraction_path)
                 sly.fs.silent_remove(local_path)
 
