@@ -1,0 +1,1 @@
+The **Land-cOVEr Domain Adaptive semantic segmentation (LoveDA)** dataset was created to provide land-cover semantic segmentation and unsupervised domain adaptation (UDA) tasks. Exploring the use of deep transfer learning methods on this dataset will be a meaningful way to promote city-level or national-level land-cover mapping.

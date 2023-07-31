@@ -13,7 +13,7 @@ from dataset_tools.templates import (
 ##################################
 # * Before uploading to instance #
 ##################################
-PROJECT_NAME: str = "LoveDA - A Remote Sensing Land-Cover"
+PROJECT_NAME: str = "LoveDA"
 PROJECT_NAME_FULL: str = (
     "LoveDA: A Remote Sensing Land-Cover Dataset for Domain Adaptive Semantic Segmentation"
 )
@@ -23,7 +23,7 @@ PROJECT_NAME_FULL: str = (
 ##################################
 LICENSE: License = License.BY_NC_SA_4_0()
 APPLICATIONS: List[Union[Industry, Domain, Research]] = [Domain.GIS()]
-CATEGORY: Category = Category.Aerial()
+CATEGORY: Category = Category.Aerial(extra=Category.Satellite())
 
 CV_TASKS: List[CVTask] = [CVTask.SemanticSegmentation()]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.SemanticSegmentation()]
