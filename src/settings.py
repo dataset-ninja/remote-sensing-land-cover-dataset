@@ -45,6 +45,7 @@ GITHUB_URL: str = "https://github.com/dataset-ninja/remote-sensing-land-cover-da
 ### * Optional after uploading ###
 ##################################
 DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = {
+    "Datasheet.pdf": "https://zenodo.org/record/5706578/files/Datasheet.pdf?download=1",
     "Train.zip": "https://zenodo.org/record/5706578/files/Train.zip?download=1",
     "Val.zip": "https://zenodo.org/record/5706578/files/Val.zip?download=1",
     "Test.zip": "https://zenodo.org/record/5706578/files/Test.zip?download=1",
