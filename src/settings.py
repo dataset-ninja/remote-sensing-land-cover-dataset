@@ -78,7 +78,7 @@ AUTHORS: Optional[List[str]] = [
 ORGANIZATION_NAME: Optional[Union[str, List[str]]] = "Wuhan University, China"
 ORGANIZATION_URL: Optional[Union[str, List[str]]] = "https://en.whu.edu.cn/"
 
-SLYTAGSPLIT: Optional[Dict[str, List[str]]] = None
+SLYTAGSPLIT: Optional[Dict[str, List[str]]] = {"area": ["rural", "urban"]}
 TAGS: List[str] = None
 
 ##################################
