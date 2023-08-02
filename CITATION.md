@@ -23,4 +23,4 @@ If you make use of the LoveDA - A Remote Sensing Land-Cover data, please cite th
     }
 ```
 
-[🔗 Source](https://github.com/Junjue-Wang/LoveDA#citation)
+[Source](https://github.com/Junjue-Wang/LoveDA#citation)
