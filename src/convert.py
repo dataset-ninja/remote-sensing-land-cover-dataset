@@ -42,8 +42,8 @@ def download_dataset(teamfiles_dir: str) -> str:
                     api.file.download(team_id, teamfiles_path, local_path)
 
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
-                unpack_if_archive(local_path)
-                sly.logger.info(f"Archive '{file_name_with_ext}' was unpacked successfully")
+                unpacked_path = unpack_if_archive(local_path)
+                sly.logger.info(f"Archive '{file_name_with_ext}' was unpacked successfully to '{unpacked_path}'.")
                 sly.fs.silent_remove(local_path)
 
             else:
