@@ -1,6 +1,6 @@
-Dataset **LoveDA - A Remote Sensing Land-Cover** can be downloaded in Supervisely format:
+Dataset **LoveDA** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/x/9/Fl/9vEdc94lkHcdWll3t2EqyaydsVqWmd8AleS2MyawGwxZYp0tY1Ve1hNZqYb5zR9f2JHGk6TlOS9EM2weQ1aDOGd1u79WfpHxkkqJkimLKC0QBLYPzS2dlZAUiiHs.tar)
+ [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/4/U/U6/KuCCJIXfBNzkMACCSBEs5vWBYU5FWGsqoB419Mcz40ogm1HFLInVHJP6xG9EzaIMxMIydVQaJhvITsAS4s6EJ8cdFiYoQCjIfP9dzSdRPV5KcFZh0WQWlvLgTYGE.tar)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
@@ -11,10 +11,13 @@ pip install --upgrade dataset-tools
 ``` python
 import dataset_tools as dtools
 
-dtools.download(dataset='LoveDA - A Remote Sensing Land-Cover', dst_path='~/dtools/datasets/LoveDA - A Remote Sensing Land-Cover.tar')
+dtools.download(dataset='LoveDA', dst_dir='~/dataset-ninja/')
 ```
+Make sure not to overlook the [python code example](https://developer.supervisely.com/getting-started/python-sdk-tutorials/iterate-over-a-local-project) available on the Supervisely Developer Portal. It will give you a clear idea of how to effortlessly work with the downloaded dataset.
+
 The data in original format can be downloaded here:
 
-- 🔗[Train.zip](https://zenodo.org/record/5706578/files/Train.zip?download=1)
-- 🔗[Val.zip](https://zenodo.org/record/5706578/files/Val.zip?download=1)
-- 🔗[Test.zip](https://zenodo.org/record/5706578/files/Test.zip?download=1)
+- [Datasheet.pdf](https://zenodo.org/record/5706578/files/Datasheet.pdf?download=1)
+- [Train.zip](https://zenodo.org/record/5706578/files/Train.zip?download=1)
+- [Val.zip](https://zenodo.org/record/5706578/files/Val.zip?download=1)
+- [Test.zip](https://zenodo.org/record/5706578/files/Test.zip?download=1)
