@@ -31,6 +31,8 @@ def download_dataset(teamfiles_dir: str) -> str:
 
     if isinstance(s.DOWNLOAD_ORIGINAL_URL, dict):
         for file_name_with_ext, url in s.DOWNLOAD_ORIGINAL_URL.items():
+            if file_name_with_ext == "Datasheet.pdf":
+                continue
             local_path = os.path.join(storage_dir, file_name_with_ext)
             teamfiles_path = os.path.join(teamfiles_dir, file_name_with_ext)
 
@@ -78,8 +80,8 @@ def convert_and_upload_supervisely_project(
     tag_meta_ptg2 = sly.TagMeta("urban", sly.TagValueType.NONE)
 
     folder_to_tag_meta = {
-        "Rural": tag_meta_ptg1,
-        "Urban": tag_meta_ptg2,
+        "Rural.zip": tag_meta_ptg1,
+        "Urban.zip": tag_meta_ptg2,
     }
 
     teamfiles_dir = "/4import/LoveDA/"
