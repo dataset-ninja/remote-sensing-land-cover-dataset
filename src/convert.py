@@ -80,8 +80,8 @@ def convert_and_upload_supervisely_project(
     tag_meta_ptg2 = sly.TagMeta("urban", sly.TagValueType.NONE)
 
     folder_to_tag_meta = {
-        "Rural.zip": tag_meta_ptg1,
-        "Urban.zip": tag_meta_ptg2,
+        "Rural": tag_meta_ptg1,
+        "Urban": tag_meta_ptg2,
     }
 
     teamfiles_dir = "/4import/LoveDA/"
