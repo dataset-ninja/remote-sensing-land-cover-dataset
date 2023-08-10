@@ -22,7 +22,7 @@ PROJECT_NAME_FULL: str = (
 # * After uploading to instance ##
 ##################################
 LICENSE: License = License.BY_NC_SA_4_0()
-APPLICATIONS: List[Union[Industry, Domain, Research]] = [Domain.GIS()]
+APPLICATIONS: List[Union[Industry, Domain, Research]] = [Domain.Geospatial()]
 CATEGORY: Category = Category.Aerial(extra=Category.Satellite())
 
 CV_TASKS: List[CVTask] = [CVTask.SemanticSegmentation()]

@@ -1,4 +1,4 @@
-**LoveDA: A Remote Sensing Land-Cover Dataset for Domain Adaptive Semantic Segmentation** is a dataset for a semantic segmentation task. It is used in the geoinformational systems (GIS) domain. 
+**LoveDA: A Remote Sensing Land-Cover Dataset for Domain Adaptive Semantic Segmentation** is a dataset for a semantic segmentation task. It is used in the geospatial domain. 
 
 The dataset consists of 5987 images with 20658 labeled objects belonging to 7 different classes including *background*, *road*, *building*, and other: *forest*, *water*, *agriculture*, and *barren*.
 
