@@ -66,7 +66,9 @@ CLASS2COLOR: Optional[Dict[str, List[str]]] = {
 
 PAPER: Optional[
     str
-] = "https://datasets-benchmarks-proceedings.neurips.cc/paper_files/paper/2021/file/4e732ced3463d06de0ca9a15b6153677-Paper-round2.pdf"
+] = "https://www.researchgate.net/publication/355390292_LoveDA_A_Remote_Sensing_Land-Cover_Dataset_for_Domain_Adaptive_Semantic_Segmentation"
+REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = {"GitHub":"https://github.com/Junjue-Wang/LoveDA"}
+
 CITATION_URL: Optional[str] = "https://github.com/Junjue-Wang/LoveDA#citation"
 AUTHORS: Optional[List[str]] = [
     "Junjue Wang",
@@ -75,11 +77,13 @@ AUTHORS: Optional[List[str]] = [
     "Xiaoyan Lu",
     "Yanfei Zhong",
 ]
+AUTHORS_CONTACTS: Optional[List[str]] = ["kingdrone@whu.edu","zhengzhuo@whu.edu","maailong007@whu.edu","luxiaoyan@whu.edu","zhongyanfei@whu.edu"]
+
 
 ORGANIZATION_NAME: Optional[Union[str, List[str]]] = "Wuhan University, China"
 ORGANIZATION_URL: Optional[Union[str, List[str]]] = "https://en.whu.edu.cn/"
 
-SLYTAGSPLIT: Optional[Dict[str, List[str]]] = {"area": ["rural", "urban"]}
+SLYTAGSPLIT: Optional[Dict[str, List[str]]] = {"areas": ["rural", "urban"]}
 TAGS: List[str] = None
 
 ##################################
@@ -120,8 +124,10 @@ def get_settings():
     settings["download_original_url"] = DOWNLOAD_ORIGINAL_URL
     settings["class2color"] = CLASS2COLOR
     settings["paper"] = PAPER
+    settings["repository"] = REPOSITORY    
     settings["citation_url"] = CITATION_URL
     settings["authors"] = AUTHORS
+    settings["authors_contacts"] = AUTHORS_CONTACTS    
     settings["organization_name"] = ORGANIZATION_NAME
     settings["organization_url"] = ORGANIZATION_URL
     settings["slytagsplit"] = SLYTAGSPLIT
