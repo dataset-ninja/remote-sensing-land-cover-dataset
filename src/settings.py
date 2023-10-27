@@ -15,7 +15,7 @@ from dataset_tools.templates import (
 ##################################
 PROJECT_NAME: str = "LoveDA"
 PROJECT_NAME_FULL: str = (
-    "LoveDA: A Remote Sensing Land-Cover Dataset for Domain Adaptive Semantic Segmentation"
+    " LoveDA: Land-cOVEr Domain Adaptive Semantic Segmentation"
 )
 HIDE_DATASET = False  # set False when 100% sure about repo quality
 
@@ -54,13 +54,13 @@ DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = {
 # Optional link for downloading original dataset (e.g. "https://some.com/dataset/download")
 
 CLASS2COLOR: Optional[Dict[str, List[str]]] = {
-    "background": [87, 4, 79],
-    "building": [152, 95, 173],
-    "road": [17, 24, 149],
-    "water": [180, 207, 210],
-    "barren": [180, 162, 54],
-    "forest": [134, 203, 67],
-    "agriculture": [135, 102, 1],
+    "background": [0, 0, 0],
+    "building": [255, 0, 0],
+    "road": [255, 255, 0],
+    "water": [0, 0, 255],
+    "barren": [159,129,183],
+    "forest": [0, 255, 0],
+    "agriculture": [255,195,128],
 }
 # If specific colors for classes are needed, fill this dict (e.g. {"class1": [255, 0, 0], "class2": [0, 255, 0]})
 
