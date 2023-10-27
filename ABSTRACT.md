@@ -9,6 +9,7 @@ Deep learning approaches have demonstrated substantial potential in the realm of
 The LoveDA dataset is a valuable resource for promoting large-scale land-cover mapping. Its key characteristics include multi-scale objects, complex background samples, and inconsistent class distributions, providing real-world complexity for researchers working on semantic segmentation and UDA tasks. By focusing on the style differences between geographical environments, LoveDA presents a distinct challenge in UDA compared to general computer vision datasets.
 
 ## Image Distribution and Division
+
 The LoveDA dataset was assembled from 0.3 m RGB images collected in Nanjing, Changzhou, and Wuhan, covering a total area of 536.15 km². This dataset consists of both urban and rural scenes, promoting diversity. Nine urban areas were carefully selected from economically developed districts characterized by high population density (>1000 people/km²). Concurrently, nine rural areas were chosen from less developed districts. After undergoing geometric registration and pre-processing, each area was represented by non-overlapping 1024 × 1024 images.
 
 The LoveDA dataset is suitable for evaluating two primary tasks: **Semantic Segmentation** and **UDA**. For the first, eight areas are allocated for training, while the remainder are designated for validation and testing. These sets encompass both urban and rural regions. For the second, the UDA process addresses two cross-domain adaptation sub-tasks: 
@@ -44,7 +45,9 @@ It can be evaluated for two tasks: semantic segmentation and unsupervised domain
 
 <img src="https://github.com/supervisely/dataset-tools/assets/78355358/41c1e786-4226-4c4e-891a-84e69fc5251f" alt="image" width="600">
 
-**Statistics for LoveDA:** The dataset exhibits the largest number of labeled pixels and land-cover objects compared to other HSR land-cover datasets. The urban scenes in LoveDA contain diverse man-made objects, whereas rural areas are dominated by agricultural land. Spectral statistics show consistency in mean values and lower standard deviations for rural images, indicating more homogeneous areas. The presence of multi-scale objects necessitates models with multi-scale capture capabilities, particularly for large-scale land cover mapping tasks, thus increasing the challenge of model transferability in the face of varying urban and rural scenes.
+## Statistics for LoveDA
+
+The dataset exhibits the largest number of labeled pixels and land-cover objects compared to other HSR land-cover datasets. The urban scenes in LoveDA contain diverse man-made objects, whereas rural areas are dominated by agricultural land. Spectral statistics show consistency in mean values and lower standard deviations for rural images, indicating more homogeneous areas. The presence of multi-scale objects necessitates models with multi-scale capture capabilities, particularly for large-scale land cover mapping tasks, thus increasing the challenge of model transferability in the face of varying urban and rural scenes.
 
 <img src="https://github.com/supervisely/dataset-tools/assets/78355358/aa2aa42a-c309-41e7-b1ba-d734085f90a3" alt="image" width="800">
 
