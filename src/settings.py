@@ -54,7 +54,7 @@ DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = {
 # Optional link for downloading original dataset (e.g. "https://some.com/dataset/download")
 
 CLASS2COLOR: Optional[Dict[str, List[str]]] = {
-    "background": [0, 0, 0],
+    "background": [255, 255, 255],
     "building": [255, 0, 0],
     "road": [255, 255, 0],
     "water": [0, 0, 255],
