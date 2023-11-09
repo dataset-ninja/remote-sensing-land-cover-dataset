@@ -15,7 +15,7 @@ from dataset_tools.templates import (
 ##################################
 PROJECT_NAME: str = "LoveDA"
 PROJECT_NAME_FULL: str = (
-    " LoveDA: Land-cOVEr Domain Adaptive Semantic Segmentation"
+    "LoveDA: Land-cOVEr Domain Adaptive Semantic Segmentation"
 )
 HIDE_DATASET = False  # set False when 100% sure about repo quality
 
