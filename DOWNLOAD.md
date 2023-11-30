@@ -1,6 +1,6 @@
 Dataset **LoveDA** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/m/X/kP/1W18kTY9En99MTuByVO58tusjfrlyp9l1oW4RvIqJvJPXoWZga0MWoFOZTA1E1yxwjNpmDcSXuCviO5IIwTQ9xjbeigC3olll1krBOIRLI4NRuxN4JedZjWvC7JP.tar)
+ [Download](https://www.dropbox.com/scl/fi/8zj6978szhrd5y791imzc/loveda-DatasetNinja.tar?rlkey=fnrrxye1ltjnj9h1gfkv9f6uu&dl=1)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
